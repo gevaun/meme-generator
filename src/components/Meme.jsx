@@ -48,8 +48,6 @@ export default function Meme() {
 
     // The useEffect hook handles side effects - side effects are actions that happen outside of the normal flow of the application in react
 
-    
-
     const id = useId()
 
     return (
@@ -58,7 +56,7 @@ export default function Meme() {
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                     {/* Top text */}
                     <div className="sm:col-span-3">
-                        <label htmlFor={`${id}-top-text`} className="block text-sm font-medium leading-6 text-gray-900">
+                        <label htmlFor={`${id}-top-text`} className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                             Top text
                         </label>
                         <div className="mt-2">
@@ -74,7 +72,7 @@ export default function Meme() {
                     </div>
                     {/* Bottom text */}
                     <div className="sm:col-span-3">
-                        <label htmlFor={`${id}-bottom-text`} className="block text-sm font-medium leading-6 text-gray-900">
+                        <label htmlFor={`${id}-bottom-text`} className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                             Bottom text
                         </label>
                         <div className="mt-2">
