@@ -1,25 +1,24 @@
 import { useState, useEffect, useId } from 'react'
-import memeData from '../data/memesData'
 
 export default function Meme() {
 
+    const [allMemes, setAllMemes] = useState([])
     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
-        randomImage: initialRandomImage()
+        randomImage: "http://i.imgflip.com/1bij.jpg"
     })
 
-    const [allMemeImages, setMemeImages] = useState(memeData)
-
-    function initialRandomImage() {
-        // Get a random meme image for the initial render
-        const memesArray = memeData.data.memes
-        const randomIndex = Math.floor(Math.random() * memesArray.length)
-        return memesArray[randomIndex].url
-    }
+    useEffect(() => {
+        console.log('useEffect ran')
+        // Get all the memes from the API   
+        fetch('https://api.imgflip.com/get_memes')
+            .then(response => response.json())
+            .then(data => setAllMemes(data))
+    }, [])
 
     function getMemeImage() {
-        const memesArray = allMemeImages.data.memes
+        const memesArray = allMemes.data.memes
         const randomIndex = Math.floor(Math.random() * memesArray.length)
         const url = memesArray[randomIndex].url
         // Update the state with the new random image
@@ -41,6 +40,8 @@ export default function Meme() {
             }
         })
     }
+
+
 
     // useEffect(() => {
     //     alert(`Meme: ${meme.randomImage}`)
